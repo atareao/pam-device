@@ -10,7 +10,7 @@
 
 [![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
 [![GitHub: atareao](https://img.shields.io/github/followers/atareao?label=Follow)](https://github.com/atareao)
-[![Mastodon: atareao](https://img.shields.io/mastodon/follow/:217b21b492ebb26229999fd582dc03ebe178adb03a3bc3568719cf6ce4c5e013?domain=https%3A%2F%2Fmastodon.social)](https://mastodon.social/@atareao)
+[![Mastodon: atareao](https://img.shields.io/mastodon/follow/217b21b492ebb26229999fd582dc03ebe178adb03a3bc3568719cf6ce4c5e013?domain=https://mastodon.social)](https://mastodon.social/@atareao)
 
 
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
