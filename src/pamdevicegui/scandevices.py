@@ -91,7 +91,7 @@ class ScanDevicesDialog(Gtk.Dialog):
         set_margins(self.label, 15)
         grid.attach(self.label, 0, 0, 1 ,1)
 
-        self.devices_list = ListBoxDevices([])
+        self.devices_list = ListBoxDevices(devices_kind, [])
 
         grid.attach(self.devices_list, 0, 1, 1 ,1)
 
