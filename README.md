@@ -1,7 +1,7 @@
 # PAM-DEVICE
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/atareao/pam-device)
-![GitHub contributors](https://img.shields.io/github/contributors/atareao-pam-device)
+![GitHub contributors](https://img.shields.io/github/contributors/atareao/pam-device)
 ![GitHub stars](https://img.shields.io/github/stars/atareao/pam-device?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/atareao/pam-device?style=social)
 ![Twitter Follow](https://img.shields.io/twitter/follow/atareao?style=social)
