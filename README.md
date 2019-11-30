@@ -2,7 +2,7 @@
 
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/atareao/pam-device)
-![GitHub contributors](https://img.shields.io/github/contributors/atareao/-pam-device)
+![GitHub contributors](https://img.shields.io/github/contributors/atareao/pam-device)
 ![GitHub stars](https://img.shields.io/github/stars/atareao/pam-device?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/atareao/pam-device?style=social)
 
@@ -10,7 +10,7 @@
 
 [![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
 [![GitHub: atareao](https://img.shields.io/github/followers/atareao?label=Follow)](https://github.com/atareao)
-[![Mastodon: atareao](https://img.shields.io/mastodon/follow/@atareao?domain=https%3A%2F%2Fmastodon.social)](https://mastodon.social/@atareao)
+[![Mastodon: atareao](https://img.shields.io/mastodon/follow/atareao?domain=https%3A%2F%2Fmastodon.social)](https://mastodon.social/@atareao)
 
 
 ![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
