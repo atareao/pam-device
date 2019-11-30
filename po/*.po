@@ -1,0 +1,161 @@
+# Language * translations for pam-device package.
+# Copyright (C) 2019 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the pam-device package.
+# Lorenzo <lorenzo.carbonell.cerezo@gmail.com>, 2019.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: pam-device - 0.2.0-extras-19.10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-30 10:38+0100\n"
+"PO-Revision-Date: 2019-11-30 10:38+0100\n"
+"Last-Translator: Lorenzo <lorenzo.carbonell.cerezo@gmail.com>\n"
+"Language-Team: Language *\n"
+"Language: *\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/pamdevicegui/device_usb.py:56
+msgid "Custom dock"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:70
+msgid "Left"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:71
+msgid "Right"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:72
+msgid "Top"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:73
+msgid "Bottom"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:81
+msgid "Dock position"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:82
+msgid "Set the dock position on the screen."
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:85
+msgid "Enable minimize click action"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:86
+msgid "Minimize when clicking on a running app."
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:89
+msgid "Reduce dock length"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:90
+msgid "Reduce the dock container to icons."
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:93
+msgid "Force straight corner"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:94
+msgid "Make the borders in the dash non rounded."
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:109
+msgid "Isolate monitors"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:110
+msgid "Provide monitor isolation"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:112
+msgid "Multi monitor"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:113
+msgid "Enable multi monitor dock"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:128 src/pamdevicegui/device_usb.py:129
+msgid "Hide applications button"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:131
+msgid "Show apps at top"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:132
+msgid "Show application button at top"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:134
+msgid "Hide favorites"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:135
+msgid "Hide favorites apps"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:137
+msgid "Hide running"
+msgstr ""
+
+#: src/pamdevicegui/device_usb.py:138
+msgid "Hide running apps"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:165
+msgid "Add device"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:166
+msgid "Remove device"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:171
+msgid "Homepage"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:176
+msgid "Code"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:177
+msgid "Issues"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:182
+msgid "Twitter"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:183
+msgid "GitHub"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:188
+msgid "Donations"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:193
+msgid "About"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:198
+msgid "Quit"
+msgstr ""
+
+#: src/pamdevicegui/mainwindow.py:203
+msgid "Help"
+msgstr ""
+
+#: src/pamdevicegui/scandevices.py:90
+msgid "Scaning devices..."
+msgstr ""

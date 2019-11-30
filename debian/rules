@@ -34,12 +34,10 @@ install: build
 	dh_installdirs
 	dh_install
 	# Create languages directories
-	# mkdir -p ${CURDIR}/debian/lplayer/usr/share/locale-langpack/es/LC_MESSAGES
-	# mkdir -p ${CURDIR}/debian/lplayer/usr/share/locale-langpack/fr/LC_MESSAGES
+	mkdir -p ${CURDIR}/debian/pam-device/usr/share/locale-langpack/*/LC_MESSAGES
 	# End create languages directories
 	# Compile languages
-	# msgfmt po/es.po -o ${CURDIR}/debian/lplayer/usr/share/locale-langpack/es/LC_MESSAGES/lplayer.mo
-	# msgfmt po/fr.po -o ${CURDIR}/debian/lplayer/usr/share/locale-langpack/fr/LC_MESSAGES/lplayer.mo
+	msgfmt po/*.po -o ${CURDIR}/debian/pam-device/usr/share/locale-langpack/*/LC_MESSAGES/pam-device.mo
 	# End comile languages
 	# Add here commands to install the package into debian/<packagename>.
 	#$(MAKE) prefix=`pwd`/debian/`dh_listpackages`/usr install
@@ -86,4 +84,3 @@ binary-arch: build install
 
 binary: binary-indep binary-arch
 .PHONY: build clean binary-indep binary-arch binary install
-
