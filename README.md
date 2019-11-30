@@ -1,10 +1,22 @@
 # PAM-DEVICE
 
+
 ![GitHub repo size](https://img.shields.io/github/repo-size/atareao/pam-device)
-![GitHub contributors](https://img.shields.io/github/contributors/atareao/pam-device)
+![GitHub contributors](https://img.shields.io/github/contributors/atareao/-pam-device)
 ![GitHub stars](https://img.shields.io/github/stars/atareao/pam-device?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/atareao/pam-device?style=social)
-![Twitter Follow](https://img.shields.io/twitter/follow/atareao?style=social)
+
+
+
+[![Twitter: atareao](https://img.shields.io/twitter/follow/atareao.svg?style=social)](https://twitter.com/atareao)
+[![GitHub: atareao](https://img.shields.io/github/followers/atareao?label=Follow)](https://github.com/atareao)
+[![Mastodon: atareao](https://img.shields.io/mastodon/follow/@atareao?domain=https%3A%2F%2Fmastodon.social)](https://mastodon.social/@atareao)
+
+
+![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green)
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b3e704c3f150404582cd23b9fcb4be32)](https://www.codacy.com/manual/atareao/pam-device?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=atareao/pam-device&amp;utm_campaign=Badge_Grade)
+[![CodeFactor](https://www.codefactor.io/repository/github/atareao/pam-device/badge/master)](https://www.codefactor.io/repository/github/atareao/pam-device/overview/master)
 
 PAM DEVICE is a Pluggable Authentication Module for device authentication. You only need to configure a usb device or a bluetooth device, and not password need to access to your laptop or to make `sudo`.
 
