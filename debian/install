@@ -1,0 +1,8 @@
+debian/pam-auth-update/device usr/share/pam-configs/
+src/pam_device.py lib/security/
+src/pamdevice lib/security/
+bin/pam-device usr/bin/
+src/pamdevicegui usr/share/pam-device/
+data/icons/pam-device.svg usr/share/icons/
+debian/changelog usr/share/pam-device/
+data/pam-device.desktop usr/share/applications/

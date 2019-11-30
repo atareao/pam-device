@@ -1,0 +1,22 @@
+Source: pam-device
+Maintainer: Lorenzo Carbonell Cerezo <atareao@atareao.es>
+Section: admin
+Priority: optional
+Standards-Version: 3.9.8
+Build-Depends: debhelper (>= 9)
+Homepage: http://www.atareao.es/aplicacion/pam-device
+
+Package: pam-device
+Depends: ${python:Depends},
+         ${misc:Depends},
+         libpam-python,
+         python-pam,
+         python-bluez,
+         python3-bluez,
+         python3,
+         python3-gi,
+         gir1.2-gtk-3.0,
+         gir1.2-gdkpixbuf-2.0
+Architecture: all
+Description: Pluggable Authentication Module for device authentication.
+ Bluetooth or usb is required to authentication.

@@ -1,0 +1,6 @@
+tar-ignore = ".hg*"
+tar-ignore = "*.deb"
+tar-ignore = "*.dsc"
+tar-ignore = "*.changes"
+tar-ignore = "*.build*"
+tar-ignore = "*.xz"

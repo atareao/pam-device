@@ -1,0 +1,21 @@
+pam-device (0.2.0-extras-19.10.0) eoan; urgency=medium
+
+  * Add GUI
+  * Add desktop launcher
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sat, 30 Nov 2019 10:33:15 +0100
+
+pam-device (0.1.6-extras-19.10.3) eoan; urgency=low
+
+  * First release
+  * Fixed a bug with pam-device.py
+  * Added dependencies
+  * Fixed bugs
+  * Overload
+  * Remove repeated messages
+  * Improved messages
+  * Add enabled option to enable devices
+  * Return id and name for device connected
+  * Improved messages to log and PAM
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Tue, 26 Nov 2019 21:32:50 +0100

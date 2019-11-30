@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name = PAM Device
+GenericName = PAM Device
+Comment = A pluggable Authentication Module for device authentication
+Exec = /usr/bin/pam-device
+Icon = /usr/share/icons/pam-device.svg
+Type = Application
+Terminal = false
+StartupNotify = true
+Encoding = utf-8
+Categories = System;Utility;

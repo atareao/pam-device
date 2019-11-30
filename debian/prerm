@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+## Removes PAM configuration in "/etc/pam.d/common-auth":
+pam-auth-update --package --remove device
+
+#DEBHELPER#
+exit 0

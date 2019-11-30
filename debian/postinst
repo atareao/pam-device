@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+
+## Adds PAM configuration to "/etc/pam.d/common-auth":
+pam-auth-update --package device
+
+#DEBHELPER#
+exit 0
