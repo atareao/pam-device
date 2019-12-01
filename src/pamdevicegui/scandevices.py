@@ -144,7 +144,7 @@ class ScanDevicesDialog(Gtk.Dialog):
     def scan_bluetooth(self):
         found = []
         timeout = self.configuration.get('bluetooth-scan-timeout')
-        nearby_devices = bluetooth.discover_devices(duration=timeout,
+        nearby_devices = bluetooth.discover_devices(duration=int(timeout),
                                                     lookup_names=True,
                                                     flush_cache=True,
                                                     lookup_class=False)

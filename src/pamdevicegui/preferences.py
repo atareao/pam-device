@@ -101,8 +101,10 @@ class PreferencesDialog(Gtk.Dialog):
     
     def save(self):
         configuration = Configuration()
-        configuration.set('bluetooth-scan-timeout', self.entry1.get_value())
-        configuration.set('bluetooth-check-timeout', self.entry2.get_value())
+        configuration.set('bluetooth-scan-timeout',
+                          int(self.entry1.get_value()))
+        configuration.set('bluetooth-check-timeout',
+                          int(self.entry2.get_value()))
         configuration.save()
 
 if __name__ == '__main__':
