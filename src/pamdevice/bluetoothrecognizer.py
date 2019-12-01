@@ -48,5 +48,11 @@ class BluetoothRecognizer(Recognizer):
     def is_device_connected(self, item_id):
         configuration = Configuration()
         timeout = configuration.get('bluetooth-check-timeout')
-        name = bluetooth.lookup_name(item_id.decode(), timeout=timeout)
-        return name is not None
+        device_ids = bluetooth.discover_devices(duration=timeout,
+                                                lookup_names=False,
+                                                flush_cache=True,
+                                                lookup_class=False))
+        for device_id in device_ids:
+            if item_id == device_id:
+                return True
+        return False
