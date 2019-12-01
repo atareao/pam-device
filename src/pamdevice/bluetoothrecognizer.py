@@ -39,7 +39,7 @@ class BluetoothRecognizer(Recognizer):
         nearby_devices = bluetooth.discover_devices(duration=int(timeout),
                                                     lookup_names=True,
                                                     flush_cache=True,
-                                                    lookup_class=False))
+                                                    lookup_class=False)
         for addr, name in nearby_devices:
             item = {'id': addr, 'name': name}
             found.append(item)
@@ -51,7 +51,7 @@ class BluetoothRecognizer(Recognizer):
         device_ids = bluetooth.discover_devices(duration=int(timeout),
                                                 lookup_names=False,
                                                 flush_cache=True,
-                                                lookup_class=False))
+                                                lookup_class=False)
         for device_id in device_ids:
             if item_id == device_id:
                 return True
