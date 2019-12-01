@@ -34,7 +34,6 @@ syslog.openlog(facility=syslog.LOG_AUTH)
 syslog.syslog(syslog.LOG_INFO, 'PAM device: {}'.format(os.path.dirname(os.path.abspath(__file__))))
 syslog.closelog()
 import pamdevice
-import pamdevice.bluetoothrecognizer
 from pamdevice.bluetoothrecognizer import BluetoothRecognizer
 from pamdevice.usbrecognizer import USBRecognizer
 

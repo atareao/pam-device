@@ -28,7 +28,6 @@ try:
     gi.require_version('Gtk', '3.0')
     gi.require_version('Gdk', '3.0')
     gi.require_version('Gio', '2.0')
-    gi.require_version('GLib', '2.0')
     gi.require_version('GObject', '2.0')
 except Exception as e:
     print(e)
@@ -36,12 +35,8 @@ except Exception as e:
 from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
-from gi.repository import GLib
 from gi.repository import GObject
 import os
-import json
-import mimetypes
-import urllib
 from . import utils
 from .utils import _
 from .listboxdevices import ListBoxDevices

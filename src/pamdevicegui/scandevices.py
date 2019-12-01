@@ -147,7 +147,7 @@ class ScanDevicesDialog(Gtk.Dialog):
         nearby_devices = bluetooth.discover_devices(duration=timeout,
                                                     lookup_names=True,
                                                     flush_cache=True,
-                                                    lookup_class=False))
+                                                    lookup_class=False)
         for addr, name in nearby_devices:
             item = {'id': addr, 'name': name, 'enabled': False}
             if not self.exists_id('bluetooth', item['id']):

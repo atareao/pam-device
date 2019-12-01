@@ -27,7 +27,6 @@ import re
 import os
 import subprocess
 from pamdevice.recognizer import Recognizer
-from pamdevice.configurator import Configuration
 
 DEVNULL = open(os.devnull, 'wb')
 

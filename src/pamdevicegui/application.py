@@ -60,9 +60,9 @@ class MainApplication(Gtk.Application):
 
     @staticmethod
     def get_default():
-        if Application.instance is None:
-            Application.instance = Application()
-        return Application.instance
+        if MainApplication.instance is None:
+            MainApplication.instance = MainApplication()
+        return MainApplication.instance
 
     def do_startup(self):
         """Startup the application."""
@@ -152,7 +152,7 @@ class MainApplication(Gtk.Application):
         action.connect('activate', callback)
         self.add_action(action)
 
-    def __on_quit(self, *_):
+    def __on_quit(self, *args):
         self.get_active_window().close()
         self.quit()
 
