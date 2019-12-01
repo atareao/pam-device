@@ -26,5 +26,18 @@
 from pamdevice.bluetoothrecognizer import BluetoothRecognizer
 
 if __name__ == '__main__':
-    btr = BluetoothRecognizer()
-    print(btr.check())
+    #btr = BluetoothRecognizer()
+    # print(btr.scan())
+    #print(btr.check())
+
+    print("Performing inquiry...")
+
+    import bluetooth
+
+    #nearby_devices = bluetooth.discover_devices(duration=1, lookup_names=True, flush_cache=True, lookup_class=False)
+    nearby_devices = bluetooth.discover_devices(duration=2, lookup_names=False, flush_cache=False, lookup_class=False)
+
+    print("Found {} devices".format(len(nearby_devices)))
+
+    for device in nearby_devices:
+        print(device)

@@ -83,5 +83,5 @@ APPNAME = _(APPNAME)
 def set_margins(widget, margin):
     widget.set_margin_top(margin)
     widget.set_margin_bottom(margin)
-    widget.set_margin_left(margin)
-    widget.set_margin_right(margin)
+    widget.set_margin_end(margin)
+    widget.set_margin_start(margin)

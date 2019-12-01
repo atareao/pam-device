@@ -1,3 +1,11 @@
+pam-device (0.3.0-extras-19.10.0) eoan; urgency=medium
+
+  * Add Preferences Dialog
+  * Add bluetooth scan timeout
+  * Add bluetooth check timeout
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 01 Dec 2019 09:22:27 +0100
+
 pam-device (0.2.0-extras-19.10.1) eoan; urgency=medium
 
   * Add GUI

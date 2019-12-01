@@ -61,11 +61,11 @@ class ScanDevicesDialog(Gtk.Dialog):
     def __init__(self, window, action, devices_kind):
         Gtk.Dialog.__init__(self, '{} | {} {}'.format(
             utils.APPNAME, action.split('_')[0].capitalize(), devices_kind),
-            window,
-            Gtk.DialogFlags.MODAL |
-            Gtk.DialogFlags.DESTROY_WITH_PARENT,
-            (Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT,
-             Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT))
+            window)
+        self.add_button(Gtk.STOCK_CANCEL, Gtk.ResponseType.REJECT)
+        self.add_button(Gtk.STOCK_OK, Gtk.ResponseType.ACCEPT)
+        self.set_modal(True)
+        self.set_destroy_with_parent(True)
         self.connect('destroy', self.on_close)
         self.connect('hide', self.on_hide)
         self.connect('realize', self.on_realize)
@@ -143,7 +143,11 @@ class ScanDevicesDialog(Gtk.Dialog):
 
     def scan_bluetooth(self):
         found = []
-        nearby_devices = bluetooth.discover_devices(lookup_names=True)
+        timeout = self.configuration.get('bluetooth-scan-timeout')
+        nearby_devices = bluetooth.discover_devices(duration=timeout,
+                                                    lookup_names=True,
+                                                    flush_cache=True,
+                                                    lookup_class=False))
         for addr, name in nearby_devices:
             item = {'id': addr, 'name': name, 'enabled': False}
             if not self.exists_id('bluetooth', item['id']):

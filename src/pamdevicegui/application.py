@@ -77,6 +77,9 @@ class MainApplication(Gtk.Application):
                 'remove_device',
                 callback=self.on_headerbar_clicked)
         self.__add_action(
+                'preferences',
+                callback=self.on_headerbar_clicked)
+        self.__add_action(
                 'goto_homepage',
                 callback=lambda x, y: webbrowser.open(
                     'http://www.atareao.es/'))

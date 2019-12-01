@@ -34,7 +34,12 @@ class BluetoothRecognizer(Recognizer):
 
     def scan(self):
         found = []
-        nearby_devices = bluetooth.discover_devices(lookup_names=True)
+        configuration = Configuration()
+        timeout = configuration.get('bluetooth-scan-timeout')
+        nearby_devices = bluetooth.discover_devices(duration=timeout,
+                                                    lookup_names=True,
+                                                    flush_cache=True,
+                                                    lookup_class=False))
         for addr, name in nearby_devices:
             item = {'id': addr, 'name': name}
             found.append(item)
@@ -42,6 +47,6 @@ class BluetoothRecognizer(Recognizer):
 
     def is_device_connected(self, item_id):
         configuration = Configuration()
-        timeout = configuration.get('bluetooth-timeout')
-        name = bluetooth.lookup_name(item_id, timeout=timeout)
+        timeout = configuration.get('bluetooth-check-timeout')
+        name = bluetooth.lookup_name(item_id.decode(), timeout=timeout)
         return name is not None

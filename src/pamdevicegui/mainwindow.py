@@ -47,6 +47,7 @@ from .utils import _
 from .listboxdevices import ListBoxDevices
 from .configurator import Configuration
 from .scandevices import ScanDevicesDialog
+from .preferences import PreferencesDialog
 
 DEFAULT_CURSOR = Gdk.Cursor(Gdk.CursorType.ARROW)
 WAIT_CURSOR = Gdk.Cursor(Gdk.CursorType.WATCH)
@@ -83,13 +84,6 @@ class MainWindow(Gtk.ApplicationWindow):
         self.connect('destroy', self.on_close)
         self.connect('realize', self.on_realize)
         self.get_root_window().set_cursor(WAIT_CURSOR)
-
-        '''
-        max_action = Gio.SimpleAction.new_stateful(
-            "maximize", None, GLib.Variant.new_boolean(False))
-        max_action.connect("change-state", self.on_maximize_toggle)
-        self.add_action(max_action)
-        '''
 
         self.init_headerbar()
 
@@ -168,36 +162,42 @@ class MainWindow(Gtk.ApplicationWindow):
         help_model.append_item(help_section0)
 
         help_section1_model = Gio.Menu()
-        help_section1_model.append(_('Homepage'), 'app.goto_homepage')
+        help_section1_model.append(_('Configuration'), 'app.preferences')
         help_section1 = Gio.MenuItem.new_section(None, help_section1_model)
         help_model.append_item(help_section1)
 
+
         help_section2_model = Gio.Menu()
-        help_section2_model.append(_('Code'), 'app.goto_code')
-        help_section2_model.append(_('Issues'), 'app.goto_bug')
+        help_section2_model.append(_('Homepage'), 'app.goto_homepage')
         help_section2 = Gio.MenuItem.new_section(None, help_section2_model)
         help_model.append_item(help_section2)
 
         help_section3_model = Gio.Menu()
-        help_section3_model.append(_('Twitter'), 'app.goto_twitter')
-        help_section3_model.append(_('GitHub'), 'app.goto_github')
+        help_section3_model.append(_('Code'), 'app.goto_code')
+        help_section3_model.append(_('Issues'), 'app.goto_bug')
         help_section3 = Gio.MenuItem.new_section(None, help_section3_model)
         help_model.append_item(help_section3)
 
         help_section4_model = Gio.Menu()
-        help_section4_model.append(_('Donations'), 'app.goto_donate')
+        help_section4_model.append(_('Twitter'), 'app.goto_twitter')
+        help_section4_model.append(_('GitHub'), 'app.goto_github')
         help_section4 = Gio.MenuItem.new_section(None, help_section4_model)
         help_model.append_item(help_section4)
 
         help_section5_model = Gio.Menu()
-        help_section5_model.append(_('About'), 'app.about')
+        help_section5_model.append(_('Donations'), 'app.goto_donate')
         help_section5 = Gio.MenuItem.new_section(None, help_section5_model)
         help_model.append_item(help_section5)
 
         help_section6_model = Gio.Menu()
-        help_section6_model.append(_('Quit'), 'app.quit')
+        help_section6_model.append(_('About'), 'app.about')
         help_section6 = Gio.MenuItem.new_section(None, help_section6_model)
         help_model.append_item(help_section6)
+
+        help_section7_model = Gio.Menu()
+        help_section7_model.append(_('Quit'), 'app.quit')
+        help_section7 = Gio.MenuItem.new_section(None, help_section7_model)
+        help_model.append_item(help_section7)
 
         self.control['help'] = Gtk.MenuButton()
         self.control['help'].set_tooltip_text(_('Help'))
@@ -207,36 +207,42 @@ class MainWindow(Gtk.ApplicationWindow):
         hb.pack_end(self.control['help'])
 
     def on_headerbar_clicked(self, action, action_name):
-        dialog = None
-        if self.notebook.get_current_page() == PAGE_USB:
-            device_kind = 'usb'
-        elif self.notebook.get_current_page() == PAGE_BLUETOOTH:
-            device_kind = 'bluetooth'
+        if action_name == 'preferences':
+            preferencesDialog = PreferencesDialog(self)
+            if preferencesDialog.run() == Gtk.ResponseType.ACCEPT:
+                preferencesDialog.save()
+            preferencesDialog.destroy()
         else:
-            device_kind = None
-        dialog = ScanDevicesDialog(self, action_name, device_kind)
-        if dialog.run() == Gtk.ResponseType.ACCEPT:
-            if action_name == 'add_device':
-                new_devices = dialog.get_selected()
-                if new_devices:
-                    configuration = Configuration()
-                    devices = configuration.get(device_kind)
-                    devices.extend(new_devices)
-                    configuration.set(device_kind, devices)
-                    configuration.save()
-                    self.listBox[device_kind].set_items(devices)
-            elif action_name == 'remove_device':
-                devices_to_remove = dialog.get_selected()
-                if devices_to_remove:
-                    configuration = Configuration()
-                    remain_devices = []
-                    for device in configuration.get(device_kind):
-                        if not is_device_in_devices(device, devices_to_remove):
-                            remain_devices.append(device)
-                    configuration.set(device_kind, remain_devices)
-                    configuration.save()
-                    self.listBox[device_kind].set_items(remain_devices)
-        dialog.destroy()
+            dialog = None
+            if self.notebook.get_current_page() == PAGE_USB:
+                device_kind = 'usb'
+            elif self.notebook.get_current_page() == PAGE_BLUETOOTH:
+                device_kind = 'bluetooth'
+            else:
+                device_kind = None
+            dialog = ScanDevicesDialog(self, action_name, device_kind)
+            if dialog.run() == Gtk.ResponseType.ACCEPT:
+                if action_name == 'add_device':
+                    new_devices = dialog.get_selected()
+                    if new_devices:
+                        configuration = Configuration()
+                        devices = configuration.get(device_kind)
+                        devices.extend(new_devices)
+                        configuration.set(device_kind, devices)
+                        configuration.save()
+                        self.listBox[device_kind].set_items(devices)
+                elif action_name == 'remove_device':
+                    devices_to_remove = dialog.get_selected()
+                    if devices_to_remove:
+                        configuration = Configuration()
+                        remain_devices = []
+                        for device in configuration.get(device_kind):
+                            if not is_device_in_devices(device, devices_to_remove):
+                                remain_devices.append(device)
+                        configuration.set(device_kind, remain_devices)
+                        configuration.save()
+                        self.listBox[device_kind].set_items(remain_devices)
+            dialog.destroy()
 
 
     def on_toggled(self, widget, arg):
