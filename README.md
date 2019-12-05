@@ -58,7 +58,7 @@ To add a new device click on `add device` in the menu,
 
 Then select the device you want to use to unlock Ubuntu, Linux Mint, etc.
 
-![select device](./screenshots/image03.png)
+![select device](./screenshots/image04.png)
 
 
 ## Contributing to PAM Device
