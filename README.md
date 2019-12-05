@@ -30,7 +30,7 @@ gir1.2-gtk-3.0,
 gir1.2-gdkpixbuf-2.0
 ```
 
-## Installing <project_name>
+## Installing PAM Device
 
 To install **PAM Device**, follow these steps:
 
