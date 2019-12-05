@@ -44,7 +44,6 @@ class Configuration(object):
             open(CONFIG_FILE, 'a').close()
             os.chmod(CONFIG_FILE, 0o600)
 
-
     def get(self, key):
         try:
             return self.params[key]

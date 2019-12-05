@@ -9,6 +9,8 @@
 
 PAM DEVICE is a Pluggable Authentication Module for device authentication. You only need to configure a usb device or a bluetooth device, and not password need to access to your laptop or to make `sudo`.
 
+[![Pam device](./data/icons/pam-device.svg)](https://www.atareao.es/aplicacion/pam-device/)
+
 
 ## Prerequisites
 
@@ -42,10 +44,22 @@ sudo apt install pam-device
 
 ## Using PAM Device
 
-To use **PAM Device**, open PAM Device:
+To use **PAM Device**, open PAM Device, and configure it. After init **PAM device** you see a window like this one for USB,
 
+![start PAM device](./screenshots/image01.png)
 
-Add run commands and examples you think users will find useful. Provide an options reference for bonus points!
+If you select bluetooth then,
+
+![bluetooth](./screenshots/image02.png)
+
+To add a new device click on `add device` in the menu,
+
+![add device](./screenshots/image03.png)
+
+Then select the device you want to use to unlock Ubuntu, Linux Mint, etc.
+
+![select device](./screenshots/image03.png)
+
 
 ## Contributing to PAM Device
 
