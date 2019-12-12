@@ -141,19 +141,6 @@ class ScanDevicesDialog(Gtk.Dialog):
         height = self.get_preferred_height()[0]
         self.move((monitor_width - width)/2, (monitor_height - height)/2)
 
-    def scan_bluetooth(self):
-        found = []
-        timeout = self.configuration.get('bluetooth-scan-timeout')
-        nearby_devices = bluetooth.discover_devices(duration=int(timeout),
-                                                    lookup_names=True,
-                                                    flush_cache=True,
-                                                    lookup_class=False)
-        for addr, name in nearby_devices:
-            item = {'id': addr, 'name': name, 'enabled': False}
-            if not self.exists_id('bluetooth', item['id']):
-                found.append(item)
-        return found
-
     def exists_id(self, devices_kind, id):
         devices = self.configuration.get(devices_kind)
         for device in devices:
@@ -164,10 +151,25 @@ class ScanDevicesDialog(Gtk.Dialog):
     def get_selected(self):
         return self.devices_list.get_items()
 
+    def scan_bluetooth(self):
+        device_re = re.compile(r"^\s+([^\s]+)\s+(.*)$", re.I)
+        devices = []
+        df = execute_command('hcitool scan --flush').decode()
+        for i in df.split('\n'):
+            if i:
+                info = device_re.match(i)
+                if info:
+                    dinfo = info.groups()
+                    if len(dinfo) == 2:
+                        device = {'id': dinfo[0], 'name': dinfo[1],
+                                  'enabled': False}
+                        if not self.exists_id('bluetooth', device['id']):
+                            devices.append(device)
+        return devices
 
     def scan_usb(self):
-        device_re = re.compile(".*ID\s(?P<idVendor>\w+):(?P<idProduct>\w+)\s(?P<name>.+)$", re.I)
-        serial_re = re.compile(".*iSerial\s+(?P<iSerial>[^\s]+)\s", re.I)
+        device_re = re.compile(r".*ID\s(?P<idVendor>\w+):(?P<idProduct>\w+)\s(?P<name>.+)$", re.I)
+        serial_re = re.compile(r".*iSerial\s+(?P<iSerial>[^\s]+)\s", re.I)
         found = []
         df = execute_command('lsusb').decode()
         for i in df.split('\n'):
@@ -184,7 +186,9 @@ class ScanDevicesDialog(Gtk.Dialog):
                         dinfo['iSerial'] = dserial['iSerial']
                     else:
                         dinfo['iSerial'] = ''
-                    item = {'id': '{}:{}:{}'.format(dinfo['idVendor'], dinfo['idProduct'], dinfo['iSerial']),
+                    item = {'id': '{}:{}:{}'.format(dinfo['idVendor'],
+                                                    dinfo['idProduct'],
+                                                    dinfo['iSerial']),
                             'name': dinfo['name'], 'enabled': False}
                     if not self.exists_id('usb', item['id']):
                         found.append(item)

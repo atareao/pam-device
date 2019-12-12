@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -23,36 +23,30 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import bluetooth
-import getpass
-from pamdevice.recognizer import Recognizer
-from pamdevice.configurator import Configuration
+import re
+from pamdevice.recognizer import execute_command, Recognizer
+
 
 class BluetoothRecognizer(Recognizer):
 
     device_type = 'bluetooth'
 
     def scan(self):
-        found = []
-        configuration = Configuration()
-        timeout = configuration.get('bluetooth-scan-timeout')
-        nearby_devices = bluetooth.discover_devices(duration=int(timeout),
-                                                    lookup_names=True,
-                                                    flush_cache=True,
-                                                    lookup_class=False)
-        for addr, name in nearby_devices:
-            item = {'id': addr, 'name': name}
-            found.append(item)
-        return found
+        device_re = re.compile(r"^\s+([^\s]+)\s+(.*)$", re.I)
+        devices = []
+        df = execute_command('hcitool scan --flush')
+        for i in df.split('\n'):
+            if i:
+                info = device_re.match(i)
+                if info:
+                    dinfo = info.groups()
+                    if len(dinfo) == 2:
+                        device = {'id': dinfo[0], 'name': dinfo[1]}
+                        devices.append(device)
+        return devices
 
     def is_device_connected(self, item_id):
-        configuration = Configuration()
-        timeout = configuration.get('bluetooth-check-timeout')
-        device_ids = bluetooth.discover_devices(duration=int(timeout),
-                                                lookup_names=False,
-                                                flush_cache=True,
-                                                lookup_class=False)
-        for device_id in device_ids:
-            if item_id == device_id:
-                return True
+        df = execute_command('hcitool name {}'.format(item_id))
+        if df:
+            return True
         return False

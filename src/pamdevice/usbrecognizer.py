@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+#  all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -24,24 +24,17 @@
 # SOFTWARE.
 
 import re
-import os
-import subprocess
-from pamdevice.recognizer import Recognizer
+from pamdevice.recognizer import execute_command, Recognizer
 
-DEVNULL = open(os.devnull, 'wb')
-
-def execute_command(command):
-    return subprocess.Popen(command, shell=True,
-                            stdout=subprocess.PIPE,
-                            stderr=DEVNULL).stdout.read()
 
 class USBRecognizer(Recognizer):
 
     device_type = 'usb'
 
     def scan(self):
-        device_re = re.compile(".*ID\s(?P<idVendor>\w+):(?P<idProduct>\w+)\s(?P<name>.+)$", re.I)
-        serial_re = re.compile(".*iSerial\s+(?P<iSerial>[^\s]+)\s", re.I)
+        pattern = r".*ID\s(?P<idVendor>\w+):(?P<idProduct>\w+)\s(?P<name>.+)$"
+        device_re = re.compile(pattern, re.I)
+        serial_re = re.compile(r".*iSerial\s+(?P<iSerial>[^\s]+)\s", re.I)
         devices = []
         df = execute_command('lsusb')
         for i in df.split('\n'):
@@ -58,8 +51,9 @@ class USBRecognizer(Recognizer):
                         dinfo['iSerial'] = dserial['iSerial']
                     else:
                         dinfo['iSerial'] = ''
-                    device = {'id': '{}:{}:{}'.format(dinfo['idVendor'], dinfo['idProduct'], dinfo['iSerial']),
-                            'name': dinfo['name']}
+                    device = {'id': '{}:{}:{}'.format(dinfo['idVendor'],
+                                                      dinfo['idProduct'],
+                                                      dinfo['iSerial']),
+                              'name': dinfo['name']}
                     devices.append(device)
         return devices
-

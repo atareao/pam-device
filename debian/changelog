@@ -1,4 +1,11 @@
-pam-device (0.3.1-extras-19.10.4) eoan; urgency=medium
+pam-device (0.3.21-extras-19.10.5ubuntu1) eoan; urgency=medium
+
+  * removed dependecies for compatibity
+  * added bluez
+
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Thu, 12 Dec 2019 21:56:53 +0100
+
+pam-device (0.3.1-extras-19.10.5) eoan; urgency=medium
 
   * Add Preferences Dialog
   * Add bluetooth scan timeout
@@ -7,7 +14,7 @@ pam-device (0.3.1-extras-19.10.4) eoan; urgency=medium
   * Fix a bug timeout must be integer not float
   * Fix a bug with parentesis
 
- -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Sun, 01 Dec 2019 12:47:18 +0100
+ -- Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>  Mon, 09 Dec 2019 10:58:31 +0100
 
 pam-device (0.2.0-extras-19.10.1) eoan; urgency=medium
 

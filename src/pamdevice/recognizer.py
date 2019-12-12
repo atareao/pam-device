@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -24,7 +24,19 @@
 # SOFTWARE.
 
 import abc
+import os
+import subprocess
 from pamdevice.configurator import Configuration
+
+
+DEVNULL = open(os.devnull, 'wb')
+
+
+def execute_command(command):
+    return subprocess.Popen(command, shell=True,
+                            stdout=subprocess.PIPE,
+                            stderr=DEVNULL).stdout.read()
+
 
 class Recognizer(object):
 
@@ -47,7 +59,7 @@ class Recognizer(object):
             configuration = Configuration()
             items = configuration.get(self.device_type)
             items.append(item)
-            configuration.set(_device, items)
+            configuration.set(self.device_type, items)
             configuration.save()
 
     def remove(self, item_id):
@@ -66,7 +78,6 @@ class Recognizer(object):
             if device['id'] == item_id:
                 return True
         return False
-
 
     def check(self):
         configuration = Configuration()
