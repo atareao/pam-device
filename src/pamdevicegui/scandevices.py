@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -33,10 +33,8 @@ except Exception as e:
     exit(1)
 from gi.repository import Gtk
 from gi.repository import Gdk
-from gi.repository import GLib
 import re
 import os
-import bluetooth
 import subprocess
 from .import utils
 from .utils import _
@@ -49,6 +47,7 @@ from .utils import set_margins
 DEVNULL = open(os.devnull, 'wb')
 DEFAULT_CURSOR = Gdk.Cursor(Gdk.CursorType.ARROW)
 WAIT_CURSOR = Gdk.Cursor(Gdk.CursorType.WATCH)
+
 
 def execute_command(command):
     return subprocess.Popen(command, shell=True,
@@ -97,9 +96,6 @@ class ScanDevicesDialog(Gtk.Dialog):
 
         self.get_root_window().set_cursor(WAIT_CURSOR)
         self.load_devices(action, devices_kind)
-
-    def on_close(self):
-        pass
 
     def on_hide(self, _):
         self.get_root_window().set_cursor(DEFAULT_CURSOR)

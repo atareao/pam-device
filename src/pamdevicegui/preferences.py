@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -69,7 +69,7 @@ class PreferencesDialog(Gtk.Dialog):
 
         label1 = Gtk.Label.new(_('Scaning bluetooth time:'))
         set_margins(label1, 15)
-        grid.attach(label1, 0, 0, 1 ,1)
+        grid.attach(label1, 0, 0, 1, 1)
 
         self.entry1 = Gtk.SpinButton.new_with_range(1, 100, 1)
         set_margins(self.entry1, 15)
@@ -78,7 +78,7 @@ class PreferencesDialog(Gtk.Dialog):
 
         label2 = Gtk.Label.new(_('Check for bluetooth device time:'))
         set_margins(label2, 15)
-        grid.attach(label2, 0, 1, 1 ,1)
+        grid.attach(label2, 0, 1, 1, 1)
 
         self.entry2 = Gtk.SpinButton.new_with_range(1, 100, 1)
         set_margins(self.entry2, 15)
@@ -98,7 +98,7 @@ class PreferencesDialog(Gtk.Dialog):
         configuration = Configuration()
         self.entry1.set_value(configuration.get('bluetooth-scan-timeout'))
         self.entry2.set_value(configuration.get('bluetooth-check-timeout'))
-    
+
     def save(self):
         configuration = Configuration()
         configuration.set('bluetooth-scan-timeout',
@@ -106,6 +106,7 @@ class PreferencesDialog(Gtk.Dialog):
         configuration.set('bluetooth-check-timeout',
                           int(self.entry2.get_value()))
         configuration.save()
+
 
 if __name__ == '__main__':
     preferences = PreferencesDialog(None)

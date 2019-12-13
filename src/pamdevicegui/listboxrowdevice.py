@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -37,7 +37,7 @@ from .utils import set_margins
 class ListBoxRowDevice(Gtk.ListBoxRow):
     __gsignals__ = {
         'active-changed': (GObject.SIGNAL_RUN_FIRST,
-                             GObject.TYPE_NONE, (bool,)),
+                           GObject.TYPE_NONE, (bool,)),
     }
 
     def __init__(self, item):
@@ -45,7 +45,6 @@ class ListBoxRowDevice(Gtk.ListBoxRow):
         self.set_name('listboxrowdevice')
         self.ui()
         self.set_item(item)
-
 
     def ui(self):
         grid = Gtk.Grid()
@@ -70,7 +69,6 @@ class ListBoxRowDevice(Gtk.ListBoxRow):
         self.emit('active-changed', self.switch_enabled.get_active())
 
     def set_item(self, item):
-        print('=====', item, '====')
         self.label_id.set_text(item['id'])
         self.label_name.set_text(item['name'])
         self.switch_enabled.set_active(item['enabled'])
@@ -79,6 +77,4 @@ class ListBoxRowDevice(Gtk.ListBoxRow):
         id = self.label_id.get_text()
         name = self.label_name.get_text()
         enabled = self.switch_enabled.get_active()
-        return {'id':id, 'name':name, 'enabled':enabled}
-
-
+        return {'id': id, 'name': name, 'enabled': enabled}

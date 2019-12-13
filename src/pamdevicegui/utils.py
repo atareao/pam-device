@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -33,7 +33,6 @@ import gettext
 def is_package():
     return __file__.find('src') < 0
 
-######################################
 
 APP = 'pam-device'
 APPNAME = 'Pam Device'
@@ -52,7 +51,8 @@ else:
     APPDIR = ROOTDIR
     DEBIANDIR = os.path.normpath(os.path.join(ROOTDIR, '../../debian'))
     CHANGELOG = os.path.join(DEBIANDIR, 'changelog')
-    ICON = os.path.normpath(os.path.join(ROOTDIR, '../../data/icons/pam-device.svg'))
+    ICON = os.path.normpath(
+        os.path.join(ROOTDIR, '../../data/icons/pam-device.svg'))
 
 
 f = open(CHANGELOG, 'r')

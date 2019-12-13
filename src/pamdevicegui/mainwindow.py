@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -36,7 +36,6 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
 from gi.repository import GObject
-import os
 from . import utils
 from .utils import _
 from .listboxdevices import ListBoxDevices
@@ -55,15 +54,18 @@ PAGE_FACE = 2
 def createLabelWithImage(label, image):
     mainbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
     mainbox.pack_start(Gtk.Label.new(label), False, False, 5)
-    mainbox.pack_start(Gtk.Image. new_from_icon_name(image, Gtk.IconSize.BUTTON), False, False, 5)
+    mainbox.pack_start(Gtk.Image.new_from_icon_name(
+        image, Gtk.IconSize.BUTTON), False, False, 5)
     mainbox.show_all()
     return mainbox
+
 
 def is_device_in_devices(adevice, devices):
     for device in devices:
         if device['id'] == adevice['id']:
             return True
     return False
+
 
 class MainWindow(Gtk.ApplicationWindow):
     __gsignals__ = {
@@ -82,8 +84,6 @@ class MainWindow(Gtk.ApplicationWindow):
 
         self.init_headerbar()
 
-        mainbox = Gtk.Box.new(Gtk.Orientation.HORIZONTAL, 5)
-
         self.notebook = Gtk.Notebook()
         self.add(self.notebook)
 
@@ -92,22 +92,23 @@ class MainWindow(Gtk.ApplicationWindow):
         configuration = Configuration()
         usbs = configuration.get('usb')
         self.listBox['usb'] = ListBoxDevices('usb', usbs)
-        self.listBox['usb'].connect('active-changed', self.on_usb_active_changed)
+        self.listBox['usb'].connect('active-changed',
+                                    self.on_usb_active_changed)
 
-        self.notebook.append_page(self.listBox['usb'], createLabelWithImage('USB', 'drive-removable-media-usb'))
+        self.notebook.append_page(self.listBox['usb'], createLabelWithImage(
+            'USB', 'drive-removable-media-usb'))
 
         bluetooths = configuration.get('bluetooth')
         self.listBox['bluetooth'] = ListBoxDevices('bluetooth', bluetooths)
-        self.notebook.append_page(self.listBox['bluetooth'], createLabelWithImage('Bluetooth', 'bluetooth-active-symbolic'))
-
-        #self.notebook.append_page(Gtk.Box(), createLabelWithImage('Face', 'face-cool-symbolic'))
+        self.notebook.append_page(
+            self.listBox['bluetooth'],
+            createLabelWithImage('Bluetooth', 'bluetooth-active-symbolic'))
 
         self.get_root_window().set_cursor(DEFAULT_CURSOR)
         self.set_default_size(700, 400)
         self.show_all()
 
     def on_usb_active_changed(self, widget, state, id):
-        print('==========================================')
         print(widget, state, id)
         configuration = Configuration()
         devices = configuration.get(widget.get_device_kind())
@@ -117,7 +118,6 @@ class MainWindow(Gtk.ApplicationWindow):
             break
         configuration.set(widget.get_device_kind(), devices)
         configuration.save()
-        print('==========================================')
 
     def on_close(self, *args):
         pass
@@ -133,10 +133,9 @@ class MainWindow(Gtk.ApplicationWindow):
 
     def on_row_activated(self, lb, sidewidget):
         self.stack.set_visible_child_name(sidewidget.get_stack())
-    
+
     def on_apply_clicked(self, *args):
         print(self.notebook.get_current_page())
-
 
     def init_headerbar(self):
         self.control = {}
@@ -146,7 +145,6 @@ class MainWindow(Gtk.ApplicationWindow):
         hb.set_show_close_button(True)
         hb.props.title = utils.APPNAME
         self.set_titlebar(hb)
-
 
         help_model = Gio.Menu()
 
@@ -160,7 +158,6 @@ class MainWindow(Gtk.ApplicationWindow):
         help_section1_model.append(_('Configuration'), 'app.preferences')
         help_section1 = Gio.MenuItem.new_section(None, help_section1_model)
         help_model.append_item(help_section1)
-
 
         help_section2_model = Gio.Menu()
         help_section2_model.append(_('Homepage'), 'app.goto_homepage')
@@ -232,13 +229,13 @@ class MainWindow(Gtk.ApplicationWindow):
                         configuration = Configuration()
                         remain_devices = []
                         for device in configuration.get(device_kind):
-                            if not is_device_in_devices(device, devices_to_remove):
+                            if not is_device_in_devices(
+                                    device, devices_to_remove):
                                 remain_devices.append(device)
                         configuration.set(device_kind, remain_devices)
                         configuration.save()
                         self.listBox[device_kind].set_items(remain_devices)
             dialog.destroy()
-
 
     def on_toggled(self, widget, arg):
         if widget.get_active() is True:

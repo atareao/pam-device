@@ -12,8 +12,8 @@
 # copies of the Software, and to permit persons to whom the Software is
 # furnished to do so, subject to the following conditions:
 #
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -38,9 +38,9 @@ from gi.repository import GLib
 from gi.repository import GdkPixbuf
 
 from . import utils
-from .utils import _
 from .mainwindow import MainWindow
 import webbrowser
+import sys
 
 
 class MainApplication(Gtk.Application):
@@ -198,6 +198,7 @@ Lorenzo Carbonell <lorenzo.carbonell.cerezo@gmail.com>\n')
 def main(args):
     app = MainApplication()
     app.run(args)
+
 
 if __name__ == "__main__":
     main(sys.argv)
